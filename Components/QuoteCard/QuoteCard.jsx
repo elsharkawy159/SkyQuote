@@ -4,7 +4,6 @@ import { useQuoteContext } from "../../Context/quoteData.js";
 import moment from "moment";
 import Link from "next/link.js";
 import EditQuote from "../EditQuote/EditQuote.jsx";
-import Fade from "react-reveal/Fade";
 import Swal from "sweetalert2";
 import { QuoteCardSkeleton } from "../QuoteCardSkeleton/QuoteCardSkeleton.jsx";
 
@@ -141,16 +140,16 @@ export const QuoteCardList = ({ length, col }) => {
     <div className="conteiner-fluid">
       <div className="row justify-content-evenly gap-5 m-0">
         {quotes?.quotes?.slice(0, length).map((quote) => (
-            <QuoteCard
-              key={quote?._id}
-              quoteId={quote?._id}
-              quoteUID={quote.author?._id}
-              title={quote?.title}
-              quote={quote?.description}
-              by={quote?.author?.userName}
-              at={moment(quote?.createdAt).format("LL")}
-              col={col}
-            />
+          <QuoteCard
+            key={quote?._id}
+            quoteId={quote?._id}
+            quoteUID={quote.author?._id}
+            title={quote?.title}
+            quote={quote?.description}
+            by={quote?.author?.userName}
+            at={moment(quote?.createdAt).format("LL")}
+            col={col}
+          />
         ))}
       </div>
     </div>

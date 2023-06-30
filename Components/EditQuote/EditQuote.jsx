@@ -13,8 +13,7 @@ export default function EditQuote({ quoteId, title, description }) {
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const userID = JSON.parse(localStorage.getItem("UserData"))?._id;
-  const { updateQuote, quoteRes, setQuoteRes, isLoading } =
-    useQuoteContext();
+  const { updateQuote, quoteRes, setQuoteRes, isLoading } = useQuoteContext();
 
   const handleEditQuote = async (values, quoteId) => {
     await updateQuote(quoteId, values);
@@ -25,7 +24,6 @@ export default function EditQuote({ quoteId, title, description }) {
   };
 
   const handleClickOpen = async () => {
-
     setOpen(true);
   };
 
@@ -37,12 +35,12 @@ export default function EditQuote({ quoteId, title, description }) {
     title: string()
       .required("Title is required")
       .min(3, "Minimum Length is 3")
-      .max(20, "Maximum Length is 20"),
+      .max(30, "Maximum Length is 30"),
     description: string()
       .required("Description is required")
       .matches(/^(?!.*([a-zA-Z])\1{3,}).*$/, "Description contains spam input")
       .min(10, "Minimum Length is 10")
-      .max(93, "Maximum Length is 93"),
+      .max(160, "Maximum Length is 160"),
   });
 
   return (

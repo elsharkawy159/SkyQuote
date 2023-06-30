@@ -1,12 +1,10 @@
 import React from "react";
 import Skeleton from "@mui/material/Skeleton";
 import style from "../QuoteCard/QuoteCard.module.scss";
-import Fade from "react-reveal/Fade";
 
 export const QuoteCardSkeleton = ({ length, col }) => {
   const skeletons = Array.from({ length }).map((_, i) => (
     <div key={i} className={`${col} ${style.box} `}>
-      <Fade>
         <i className={`${style.fas} fa-solid fa-quote-left ${style.fa2}`}></i>
         <div className={style.text}>
           <i
@@ -43,7 +41,6 @@ export const QuoteCardSkeleton = ({ length, col }) => {
             </p>
           </div>
         </div>
-      </Fade>
     </div>
   ));
 
