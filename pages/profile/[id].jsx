@@ -136,7 +136,7 @@ function Profile({ id }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const { params } = context;
   const { id } = params;
   return {
