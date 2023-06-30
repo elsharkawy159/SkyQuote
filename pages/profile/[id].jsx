@@ -1,3 +1,10 @@
+import { Skeleton } from "@mui/material";
+import axios from "axios";
+import moment from "moment/moment.js";
+import { useEffect, useState } from "react";
+import { QuoteCard } from "../../Components/QuoteCard/QuoteCard.jsx";
+import Head from "next/head.js";
+
 function Profile({ id }) {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,29 +24,8 @@ function Profile({ id }) {
         setIsLoading(false);
       }
     };
-
     getUser(id);
   }, [id]);
-
-  const renderSkeleton = (label) => (
-    <h4 className="col-md-6 mb-4 d-flex flex-column align-items-center">
-      <span className="fw-bold">{label}</span>{" "}
-      <Skeleton animation="wave" width={300} />
-    </h4>
-  );
-
-  const renderQuoteCard = (quote) => (
-    <div className="col-md-6 p-5" key={quote._id}>
-      <QuoteCard
-        quoteId={quote._id}
-        quoteUID={quote.author}
-        title={quote.title}
-        quote={quote.description}
-        by={"Me"}
-        at={moment(quote.createdAt).format("LL")}
-      />
-    </div>
-  );
 
   if (isLoading || !userData) {
     return (
@@ -48,11 +34,26 @@ function Profile({ id }) {
           <div className="container bg-dark bg-opacity-50 rounded-5 p-5">
             <div className="row text-light text-center">
               <h1 className="text-center fw-bolder mb-5">PROFILE</h1>
-              {renderSkeleton("First Name")}
-              {renderSkeleton("Last Name")}
-              {renderSkeleton("User Name")}
-              {renderSkeleton("Email")}
-              {renderSkeleton("Account Created At")}
+              <h4 className="col-md-6 mb-4 d-flex flex-column align-items-center">
+                <span className="fw-bold">First Name</span>{" "}
+                <Skeleton animation="wave" width={300} />
+              </h4>
+              <h4 className="col-md-6 mb-4 d-flex flex-column align-items-center">
+                <span className="fw-bold">Last Name</span>{" "}
+                <Skeleton animation="wave" width={300} />
+              </h4>
+              <h4 className="col-md-6 mb-4 d-flex flex-column align-items-center">
+                <span className="fw-bold">User Name</span>{" "}
+                <Skeleton animation="wave" width={300} />
+              </h4>
+              <h4 className="col-md-6 mb-4 d-flex flex-column align-items-center">
+                <span className="fw-bold">Email</span>{" "}
+                <Skeleton animation="wave" width={300} />
+              </h4>
+              <h4 className="col-md-12 mb-4 d-flex flex-column align-items-center">
+                <span className="fw-bold">Account Created At</span>{" "}
+                <Skeleton animation="wave" width={300} />
+              </h4>
             </div>
           </div>
         </div>
@@ -67,7 +68,7 @@ function Profile({ id }) {
   return (
     <>
       <Head>
-        <title>{userData?.user?.userName}</title>
+        <title>{userData.user.userName}</title>
         <meta
           name="description"
           content="Our website is a platform where you can freely share your favorite quotes and discover new ones from other users. Whether it's a thought-provoking line from a book or a motivational quote from a famous personality, you can easily add it to our collection for everyone to see"
@@ -88,30 +89,42 @@ function Profile({ id }) {
               <h1 className="text-center fw-bolder mb-5">PROFILE</h1>
               <h4 className="col-md-6 mb-4 d-flex flex-column">
                 <span className="fw-bold">First Name</span>{" "}
-                <span className="text-info">{userData?.user?.firstName}</span>
+                <span className="text-info">{userData.user.firstName}</span>
               </h4>
               <h4 className="col-md-6 mb-4 d-flex flex-column">
                 <span className="fw-bold">Last Name</span>{" "}
-                <span className="text-info">{userData?.user?.lastName}</span>
+                <span className="text-info">{userData.user.lastName}</span>
               </h4>
               <h4 className="col-md-6 mb-4 d-flex flex-column">
                 <span className="fw-bold">User Name</span>{" "}
-                <span className="text-info">{userData?.user?.userName}</span>
+                <span className="text-info">{userData.user.userName}</span>
               </h4>
               <h4 className="col-md-6 mb-4 d-flex flex-column">
                 <span className="fw-bold">Email</span>{" "}
-                <span className="text-info">{userData?.user?.email}</span>
+                <span className="text-info">{userData.user.email}</span>
               </h4>
               <h4 className="col-md-12 d-flex flex-column">
                 <span className="fw-bold">Account Created At</span>{" "}
                 <span className="text-info">
-                  {moment(userData?.user?.createdAt).format("LLL")}
+                  {moment(userData.user.createdAt).format("LLL")}
                 </span>
               </h4>
               {userData.userNotes.length > 0 && (
                 <div className="row justify-content-center align-items-center">
                   <h1 className="text-center fw-bolder mt-5">QUOTES</h1>
-                  {userData.userNotes.map(renderQuoteCard)}
+                  {userData.userNotes.map((quote) => (
+                    <div className="col-md-6 p-5">
+                      <QuoteCard
+                        key={quote._id}
+                        quoteId={quote._id}
+                        quoteUID={quote.author}
+                        title={quote.title}
+                        quote={quote.description}
+                        by={"Me"}
+                        at={moment(quote.createdAt).format("LL")}
+                      />
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
@@ -121,3 +134,15 @@ function Profile({ id }) {
     </>
   );
 }
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { id } = params;
+  return {
+    props: {
+      id,
+    },
+  };
+}
+
+export default Profile;

@@ -226,6 +226,13 @@ a {
   background-size: cover;
   background-attachment: fixed;
 }
+.errorbg {
+  background-image: url("https://colorlib.com/wp/wp-content/uploads/sites/2/404-error-template-6.png.webp");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
 
 .quotesList {
   margin-top: 150px;
