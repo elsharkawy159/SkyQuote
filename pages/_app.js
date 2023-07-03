@@ -13,13 +13,11 @@ import QuotesContext from "../Context/quoteData.js";
 import { useEffect } from "react";
 
 export default function MyApp({ Component, pageProps }) {
-
-    useEffect(() => {
-console.clear();  
-    }, [])
+  //     useEffect(() => {
+  // console.clear();
+  //     }, [])
 
   return (
-    
     <>
       <Head>
         <link
