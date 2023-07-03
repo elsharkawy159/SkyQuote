@@ -1,9 +1,10 @@
 import React from "react";
 import style from "./MainLanding.module.css";
 import { QuoteCardList } from "../QuoteCard/QuoteCard.jsx";
+import scrollreveal from "scrollreveal";
 
 export const MainLanding = () => {
-  ScrollReveal().reveal(".tagline");
+  scrollreveal().reveal(".tagline");
 
   return (
     <section>
