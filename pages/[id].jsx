@@ -2,7 +2,7 @@ import { Skeleton } from "@mui/material";
 import axios from "axios";
 import moment from "moment/moment.js";
 import { useEffect, useState } from "react";
-import { QuoteCard } from "../../Components/QuoteCard/QuoteCard.jsx";
+import { QuoteCard } from "../Components/QuoteCard/QuoteCard.jsx";
 import Head from "next/head.js";
 
 function Profile({ id }) {
