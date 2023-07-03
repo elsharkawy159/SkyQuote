@@ -53,25 +53,25 @@ export default function MyApp({ Component, pageProps }) {
           integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
           crossOrigin="anonymous"
         />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+          crossorigin="anonymous"
+        />
+        <Script //MDB
+          type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"
+        />
+        <Script src="https://unpkg.com/scrollreveal" />
+        <Script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" />
       </Head>
       <AuthData>
         <QuotesContext>
           <Layout>
             <Component {...pageProps} />
-            <Script
-              src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-              integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-              crossorigin="anonymous"
-            />
           </Layout>
         </QuotesContext>
       </AuthData>
-      <Script //MDB
-        type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"
-      />
-      <Script src="https://unpkg.com/scrollreveal" />
-      <Script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" />
     </>
   );
 }

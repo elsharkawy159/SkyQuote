@@ -3,6 +3,8 @@ import style from "./MainLanding.module.css";
 import { QuoteCardList } from "../QuoteCard/QuoteCard.jsx";
 
 export const MainLanding = () => {
+  ScrollReveal().reveal(".tagline");
+
   return (
     <section>
       <div
@@ -11,7 +13,7 @@ export const MainLanding = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6">
-              <h2 className="scriptFont text-light opacity-75">
+              <h2 className="scriptFont text-light opacity-75 tagline">
                 Add and Disover Amazing Quotes
               </h2>
               <h1 className="fw-bold text-light title"></h1>
