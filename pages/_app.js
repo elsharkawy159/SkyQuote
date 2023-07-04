@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import "../styles/productCard.css";
 import Layout from "@/Layout/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/js/dist/dropdown.js";
 import "@fortawesome/react-fontawesome";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,13 +14,11 @@ import QuotesContext from "../Context/quoteData.js";
 import { useEffect } from "react";
 
 export default function MyApp({ Component, pageProps }) {
-
-    useEffect(() => {
-console.clear();  
-    }, [])
+  //     useEffect(() => {
+  // console.clear();
+  //     }, [])
 
   return (
-    
     <>
       <Head>
         <link
@@ -50,6 +49,17 @@ console.clear();
           crossorigin="anonymous"
           referrerpolicy="no-referrer"
         />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+          crossorigin="anonymous"
+        />
+        <Script //MDB
+          type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"
+        />
+        <Script src="https://unpkg.com/scrollreveal" />
+        <Script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" />
       </Head>
       <AuthData>
         <QuotesContext>
@@ -58,12 +68,6 @@ console.clear();
           </Layout>
         </QuotesContext>
       </AuthData>
-      <Script //MDB
-        type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"
-      />
-      <Script src="https://unpkg.com/scrollreveal" />
-      <Script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" />
     </>
   );
 }
