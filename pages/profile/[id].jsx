@@ -120,7 +120,7 @@ function Profile({ id }) {
                         quoteUID={quote.author}
                         title={quote.title}
                         quote={quote.description}
-                        by={"Me"}
+                        by={"This User"}
                         at={moment(quote.createdAt).format("LL")}
                       />
                     </div>
