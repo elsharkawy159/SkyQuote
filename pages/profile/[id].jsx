@@ -10,7 +10,7 @@ function Profile({ id }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const getUser = async (id) => {
+    const getUser = async (id) => {
     setIsLoading(true);
     try {
       const { data } = await axios.get(
@@ -121,7 +121,7 @@ function Profile({ id }) {
                         quoteUID={quote.author}
                         title={quote.title}
                         quote={quote.description}
-                        by={"Me"}
+                        by={userData.user.userName}
                         at={moment(quote.createdAt).format("LL")}
                       />
                     </div>

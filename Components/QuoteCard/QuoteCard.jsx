@@ -4,7 +4,6 @@ import { useQuoteContext } from "../../Context/quoteData.js";
 import moment from "moment";
 import Link from "next/link.js";
 import EditQuote from "../EditQuote/EditQuote.jsx";
-import Fade from "react-reveal/Fade";
 import Swal from "sweetalert2";
 import { QuoteCardSkeleton } from "../QuoteCardSkeleton/QuoteCardSkeleton.jsx";
 

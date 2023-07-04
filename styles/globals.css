@@ -31,19 +31,19 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--main-color); 
+  background: var(--main-color);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary-color); 
+  background: var(--secondary-color);
 }
 h1,
 h2,
@@ -205,22 +205,11 @@ a {
   width: 100%;
   height: 100%;
 }
-.authbg {
-  background-image: url("/authbg.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-.profileBg {
-  background-image: url("/skybg.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-.quotesbg {
-  background-image: url("/quotesbg.jpg");
+.authbg,
+.quotesbg,
+.profileBg,
+.errorbg {
+  background-image: url("https://img.freepik.com/free-photo/silhouettes-hills-street-lamps-cloudy-sky-during-beautiful-sunset_181624-28611.jpg?w=1380&t=st=1688511866~exp=1688512466~hmac=4a7a214405a70bd2965d2ee5787db518a3759550546455166902c6ee7f5ac2d4");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

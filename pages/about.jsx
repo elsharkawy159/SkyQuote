@@ -1,6 +1,5 @@
 import Head from "next/head.js";
 import React from "react";
-import Fade from "react-reveal/Fade";
 
 function about() {
   return (
@@ -15,7 +14,6 @@ function about() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="container-fluid d-flex flex-column justify-content-center align-items-center vh-100 text-center profileBg text-light">
-        <Fade bottom>
           <h1>About Us</h1>
           <p className="text-light">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
@@ -26,7 +24,6 @@ function about() {
             laborum praesentium nostrum atque dicta laboriosam. Mollitia,
             similique!
           </p>
-        </Fade>
       </section>
     </>
   );

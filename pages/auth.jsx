@@ -3,7 +3,6 @@ import { Formik } from "formik";
 import { object, string, number, date, InferType } from "yup";
 import React, { useState } from "react";
 import { useAuthContext } from "../Context/authData.js";
-import Fade from "react-reveal/Fade";
 import Head from "next/head.js";
 
 export default function Auth() {
@@ -101,297 +100,293 @@ export default function Auth() {
                   Register
                 </a>
               </li>
-            </ul>
-
-            <Fade>
-              {" "}
-              <div className="tab-content">
-                <div
-                  className="tab-pane fade show active"
-                  id="pills-login"
-                  role="tabpanel"
-                  aria-labelledby="tab-login"
+            </ul>{" "}
+            <div className="tab-content">
+              <div
+                className="tab-pane fade show active"
+                id="pills-login"
+                role="tabpanel"
+                aria-labelledby="tab-login"
+              >
+                <Formik
+                  initialValues={{ email: "", password: "" }}
+                  validationSchema={signInSchema}
+                  onSubmit={(values) => {
+                    handleSignIn(values);
+                  }}
                 >
-                  <Formik
-                    initialValues={{ email: "", password: "" }}
-                    validationSchema={signInSchema}
-                    onSubmit={(values) => {
-                      handleSignIn(values);
-                    }}
-                  >
-                    {({
-                      values,
-                      errors,
-                      touched,
-                      handleChange,
-                      handleBlur,
-                      handleSubmit,
-                    }) => (
-                      <form onSubmit={handleSubmit}>
-                        <div className="text-center mb-4">
-                          <p className="text-light">Sign in with</p>
-                          <button
-                            type="button"
-                            className="btn btn-secondary btn-floating mx-1"
-                          >
-                            <i className="fab fa-facebook-f"></i>
-                          </button>
+                  {({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                  }) => (
+                    <form onSubmit={handleSubmit}>
+                      <div className="text-center mb-4">
+                        <p className="text-light">Sign in with</p>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-floating mx-1"
+                        >
+                          <i className="fab fa-facebook-f"></i>
+                        </button>
 
-                          <button
-                            type="button"
-                            className="btn btn-secondary btn-floating mx-1"
-                          >
-                            <i className="fab fa-google"></i>
-                          </button>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-floating mx-1"
+                        >
+                          <i className="fab fa-google"></i>
+                        </button>
 
-                          <button
-                            type="button"
-                            className="btn btn-secondary btn-floating mx-1"
-                          >
-                            <i className="fab fa-twitter"></i>
-                          </button>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-floating mx-1"
+                        >
+                          <i className="fab fa-twitter"></i>
+                        </button>
 
-                          <button
-                            type="button"
-                            className="btn btn-secondary btn-floating mx-1"
-                          >
-                            <i className="fab fa-github"></i>
-                          </button>
-                        </div>
-                        {signInRes &&
-                          (signInRes.success ? null : (
-                            <h2 className="text-center bg-danger rounded-3 bg-opacity-50 h6 p-1 mb-3">
-                              {signInRes.message}
-                            </h2>
-                          ))}
-                        <InputWithValidation
-                          name="email"
-                          label="Email Address"
-                          value={values.email}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          error={errors.email}
-                          touched={touched.email}
-                        />
-                        <InputWithValidation
-                          name="password"
-                          label="Password"
-                          value={values.password}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          error={errors.password}
-                          touched={touched.password}
-                          inputType={"password"}
-                        />
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-floating mx-1"
+                        >
+                          <i className="fab fa-github"></i>
+                        </button>
+                      </div>
+                      {signInRes &&
+                        (signInRes.success ? null : (
+                          <h2 className="text-center bg-danger rounded-3 bg-opacity-50 h6 p-1 mb-3">
+                            {signInRes.message}
+                          </h2>
+                        ))}
+                      <InputWithValidation
+                        name="email"
+                        label="Email Address"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={errors.email}
+                        touched={touched.email}
+                      />
+                      <InputWithValidation
+                        name="password"
+                        label="Password"
+                        value={values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={errors.password}
+                        touched={touched.password}
+                        inputType={"password"}
+                      />
 
-                        <div className="row mb-4">
-                          <div className="col-md-6 d-flex justify-content-center">
-                            <div className="form-check mb-3 mb-md-0">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="loginCheck"
-                                checked
-                              />
-                              <label
-                                className="form-check-label"
-                                htmlFor="loginCheck"
-                              >
-                                Remember me
-                              </label>
-                            </div>
-                          </div>
-
-                          <div className="col-md-6 d-flex justify-content-center ">
-                            <a href="#!" className="text-light">
-                              Forgot password?
-                            </a>
+                      <div className="row mb-4">
+                        <div className="col-md-6 d-flex justify-content-center">
+                          <div className="form-check mb-3 mb-md-0">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              value=""
+                              id="loginCheck"
+                              checked
+                            />
+                            <label
+                              className="form-check-label"
+                              htmlFor="loginCheck"
+                            >
+                              Remember me
+                            </label>
                           </div>
                         </div>
 
-                        {isLoading ? (
-                          <button
-                            type="submit"
-                            disabled
-                            className="btn btn-outline-light fw-bolder fs-6 btn-block border-1 mb-4"
-                          >
-                            <i className="fa-solid fa-spinner fa-spin"></i>
-                          </button>
-                        ) : (
-                          <button
-                            type="submit"
-                            className="btn btn-outline-light fw-bolder fs-6 btn-block border-1 mb-4"
-                          >
-                            Sign In
-                          </button>
-                        )}
-                      </form>
-                    )}
-                  </Formik>
-                </div>
-                <div
-                  className="tab-pane fade"
-                  id="pills-register"
-                  role="tabpanel"
-                  aria-labelledby="tab-register"
-                >
-                  <Formik
-                    initialValues={{
-                      firstName: "",
-                      lastName: "",
-                      userName: "",
-                      email: "",
-                      password: "",
-                    }}
-                    validationSchema={registrationSchema}
-                    onSubmit={(values) => {
-                      handleSignUp(values);
-                    }}
-                  >
-                    {({
-                      values,
-                      errors,
-                      touched,
-                      handleChange,
-                      handleBlur,
-                      handleSubmit,
-                    }) => (
-                      <form onSubmit={handleSubmit}>
-                        <div className="text-center mb-4">
-                          <p className="text-light">Sign in with</p>
-                          <button
-                            type="button"
-                            className="btn btn-secondary btn-floating mx-1"
-                          >
-                            <i className="fab fa-facebook-f"></i>
-                          </button>
-
-                          <button
-                            type="button"
-                            className="btn btn-secondary btn-floating mx-1"
-                          >
-                            <i className="fab fa-google"></i>
-                          </button>
-
-                          <button
-                            type="button"
-                            className="btn btn-secondary btn-floating mx-1"
-                          >
-                            <i className="fab fa-twitter"></i>
-                          </button>
-
-                          <button
-                            type="button"
-                            className="btn btn-secondary btn-floating mx-1"
-                          >
-                            <i className="fab fa-github"></i>
-                          </button>
+                        <div className="col-md-6 d-flex justify-content-center ">
+                          <a href="#!" className="text-light">
+                            Forgot password?
+                          </a>
                         </div>
+                      </div>
 
-                        {signUpRes &&
-                          (signUpRes.success ? (
-                            <h2 className="text-center bg-success rounded-3 bg-opacity-50 h6 p-1 mb-3">
-                              {signUpRes.message}
-                            </h2>
-                          ) : (
-                            <h2 className="text-center bg-danger rounded-3 bg-opacity-50 h6 p-1 mb-3">
-                              {signUpRes.message}
-                            </h2>
-                          ))}
-                        <InputWithValidation
-                          name="firstName"
-                          label="First Name"
-                          value={values.firstName}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          error={errors.firstName}
-                          touched={touched.firstName}
-                        />
-                        <InputWithValidation
-                          name="lastName"
-                          label="Last Name"
-                          value={values.lastName}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          error={errors.lastName}
-                          touched={touched.lastName}
-                        />
-                        <InputWithValidation
-                          name="userName"
-                          label="User Name (Display Name)"
-                          value={values.userName}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          error={errors.userName}
-                          touched={touched.userName}
-                        />
-                        <InputWithValidation
-                          name="email"
-                          label="Email Address"
-                          value={values.email}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          error={errors.email}
-                          touched={touched.email}
-                        />
-                        <InputWithValidation
-                          name="password"
-                          label="Password"
-                          value={values.password}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          error={errors.password}
-                          touched={touched.password}
-                          inputType={"password"}
-                        />
-                        <div className="row mb-4">
-                          <div className="col-md-6 d-flex justify-content-center">
-                            <div className="form-check mb-3 mb-md-0">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="loginCheck"
-                                checked
-                              />
-                              <label
-                                className="form-check-label"
-                                htmlFor="loginCheck"
-                              >
-                                Remember me
-                              </label>
-                            </div>
-                          </div>
-
-                          <div className="col-md-6 d-flex justify-content-center ">
-                            <a href="#!" className="text-light">
-                              Forgot password?
-                            </a>
-                          </div>
-                        </div>
-                        {isLoading ? (
-                          <button
-                            type="submit"
-                            disabled
-                            className="btn btn-outline-light fw-bolder fs-6 btn-block border-1 mb-4"
-                          >
-                            <i className="fa-solid fa-spinner fa-spin"></i>
-                          </button>
-                        ) : (
-                          <button
-                            type="submit"
-                            className="btn btn-outline-light fw-bolder fs-6 btn-block border-1 mb-4"
-                          >
-                            Sign Up
-                          </button>
-                        )}
-                      </form>
-                    )}
-                  </Formik>
-                </div>
+                      {isLoading ? (
+                        <button
+                          type="submit"
+                          disabled
+                          className="btn btn-outline-light fw-bolder fs-6 btn-block border-1 mb-4"
+                        >
+                          <i className="fa-solid fa-spinner fa-spin"></i>
+                        </button>
+                      ) : (
+                        <button
+                          type="submit"
+                          className="btn btn-outline-light fw-bolder fs-6 btn-block border-1 mb-4"
+                        >
+                          Sign In
+                        </button>
+                      )}
+                    </form>
+                  )}
+                </Formik>
               </div>
-            </Fade>
+              <div
+                className="tab-pane fade"
+                id="pills-register"
+                role="tabpanel"
+                aria-labelledby="tab-register"
+              >
+                <Formik
+                  initialValues={{
+                    firstName: "",
+                    lastName: "",
+                    userName: "",
+                    email: "",
+                    password: "",
+                  }}
+                  validationSchema={registrationSchema}
+                  onSubmit={(values) => {
+                    handleSignUp(values);
+                  }}
+                >
+                  {({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                  }) => (
+                    <form onSubmit={handleSubmit}>
+                      <div className="text-center mb-4">
+                        <p className="text-light">Sign in with</p>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-floating mx-1"
+                        >
+                          <i className="fab fa-facebook-f"></i>
+                        </button>
+
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-floating mx-1"
+                        >
+                          <i className="fab fa-google"></i>
+                        </button>
+
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-floating mx-1"
+                        >
+                          <i className="fab fa-twitter"></i>
+                        </button>
+
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-floating mx-1"
+                        >
+                          <i className="fab fa-github"></i>
+                        </button>
+                      </div>
+
+                      {signUpRes &&
+                        (signUpRes.success ? (
+                          <h2 className="text-center bg-success rounded-3 bg-opacity-50 h6 p-1 mb-3">
+                            {signUpRes.message}
+                          </h2>
+                        ) : (
+                          <h2 className="text-center bg-danger rounded-3 bg-opacity-50 h6 p-1 mb-3">
+                            {signUpRes.message}
+                          </h2>
+                        ))}
+                      <InputWithValidation
+                        name="firstName"
+                        label="First Name"
+                        value={values.firstName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={errors.firstName}
+                        touched={touched.firstName}
+                      />
+                      <InputWithValidation
+                        name="lastName"
+                        label="Last Name"
+                        value={values.lastName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={errors.lastName}
+                        touched={touched.lastName}
+                      />
+                      <InputWithValidation
+                        name="userName"
+                        label="User Name (Display Name)"
+                        value={values.userName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={errors.userName}
+                        touched={touched.userName}
+                      />
+                      <InputWithValidation
+                        name="email"
+                        label="Email Address"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={errors.email}
+                        touched={touched.email}
+                      />
+                      <InputWithValidation
+                        name="password"
+                        label="Password"
+                        value={values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={errors.password}
+                        touched={touched.password}
+                        inputType={"password"}
+                      />
+                      <div className="row mb-4">
+                        <div className="col-md-6 d-flex justify-content-center">
+                          <div className="form-check mb-3 mb-md-0">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              value=""
+                              id="loginCheck"
+                              checked
+                            />
+                            <label
+                              className="form-check-label"
+                              htmlFor="loginCheck"
+                            >
+                              Remember me
+                            </label>
+                          </div>
+                        </div>
+
+                        <div className="col-md-6 d-flex justify-content-center ">
+                          <a href="#!" className="text-light">
+                            Forgot password?
+                          </a>
+                        </div>
+                      </div>
+                      {isLoading ? (
+                        <button
+                          type="submit"
+                          disabled
+                          className="btn btn-outline-light fw-bolder fs-6 btn-block border-1 mb-4"
+                        >
+                          <i className="fa-solid fa-spinner fa-spin"></i>
+                        </button>
+                      ) : (
+                        <button
+                          type="submit"
+                          className="btn btn-outline-light fw-bolder fs-6 btn-block border-1 mb-4"
+                        >
+                          Sign Up
+                        </button>
+                      )}
+                    </form>
+                  )}
+                </Formik>
+              </div>
+            </div>
           </div>
         </div>
       </section>
