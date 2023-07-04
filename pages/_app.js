@@ -4,7 +4,6 @@ import "../styles/globals.css";
 import "../styles/productCard.css";
 import Layout from "@/Layout/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/js/dist/dropdown.js";
 import "@fortawesome/react-fontawesome";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
