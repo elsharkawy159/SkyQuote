@@ -10,7 +10,7 @@ function Profile({ id }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-    const getUser = async (id) => {
+  const getUser = async (id) => {
     setIsLoading(true);
     try {
       const { data } = await axios.get(
