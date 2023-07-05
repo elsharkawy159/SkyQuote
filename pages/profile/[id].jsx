@@ -17,11 +17,10 @@ function Profile({ id }) {
         `https://note-keep-6545.vercel.app/user/${id}`
       );
       setUserData(data);
-      setIsLoading(false);
     } catch (error) {
       setError(error);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -78,7 +77,7 @@ function Profile({ id }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section
-        className={`profileBg ${userData.userNotes.length == 0 && "vh-100"}`}
+        className={`profileBg ${userData.userNotes.length === 0 && "vh-100"}`}
       >
         <div className="overlay align-items-center d-flex ">
           <div className="container bg-dark bg-opacity-50 rounded-5 p-5">
@@ -110,13 +109,12 @@ function Profile({ id }) {
                   {moment(userData.user.createdAt).format("LLL")}
                 </span>
               </h4>
-              {userData.userNotes.length > 0 && (
+              {userData.userNotes.length > 0 ? (
                 <div className="row justify-content-center align-items-center">
                   <h1 className="text-center fw-bolder mt-5">QUOTES</h1>
                   {userData.userNotes.map((quote) => (
-                    <div className="col-md-6 p-5">
+                    <div className="col-md-6 p-5" key={quote._id}>
                       <QuoteCard
-                        key={quote._id}
                         quoteId={quote._id}
                         quoteUID={quote.author}
                         title={quote.title}
@@ -126,6 +124,12 @@ function Profile({ id }) {
                       />
                     </div>
                   ))}
+                </div>
+              ) : (
+                <div className="col-md-12 mt-5">
+                  <Skeleton animation="wave" height={100} />
+                  <Skeleton animation="wave" height={100} />
+                  <Skeleton animation="wave" height={100} />
                 </div>
               )}
             </div>
