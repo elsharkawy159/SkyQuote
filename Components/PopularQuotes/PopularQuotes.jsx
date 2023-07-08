@@ -5,7 +5,7 @@ import { QuoteCardList } from "../QuoteCard/QuoteCard.jsx";
 export const PopularQuotes = () => {
   return (
     <div className="py-5" style={{ backgroundColor: "#DEDEDE" }}>
-      <h2 className="text-center h6 pb-5 m-0 title text-light">
+      <h2 className="text-center h6 pb-5 m-0 title text-light ">
         Most Popular Quotes
       </h2>
       <QuoteCardList
